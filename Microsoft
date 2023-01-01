@@ -1,2 +1,22 @@
 
 yo yo
+d1p1:
+    class Solution:
+    def evalRPN(self, tokens: List[str]) -> int:
+        stack =[]
+
+        for t in tokens:
+            if t not in '+-*/':
+                stack.append(int(t))
+            
+            else :
+                num=stack.pop()
+                if t=='+': stack[-1]+=num
+                elif t=='-': stack[-1]-=num
+                elif t=='*': stack[-1]*= num
+                else : stack[-1]=int(stack[-1]/num)
+        
+        return stack[0]
+        
+   d2p2:
+   
