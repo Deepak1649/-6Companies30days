@@ -18,5 +18,46 @@ d1p1:
         
         return stack[0]
         
-   d2p2:
+   d1p2:
    
+        class Solution:
+    def combinationSum3(self, k: int, n: int) -> List[List[int]]:
+        result = []
+        def sol(combination,start,n):
+            if k==len(combination):
+                if n==0:
+                    print(7)
+                    result.append(combination.copy())
+                return
+           
+            for i in range(start,10):
+                combination.append(i)
+                sol(combination,i+1,n-1)
+                combination.pop()
+        sol([],1,n)
+        return result
+d1p3:
+    class Solution:
+    def getHint(self, secret: str, guess: str) -> str:
+        a=0
+        b=0
+        sl=list(secret)
+        gl=list(guess)
+        for i in  range(len(guess)):
+            if sl[i]==gl[i]:
+                a=a+1
+                sl[i]="/"
+                gl[i]="/"
+        
+       
+        for i in range(len(secret)):
+            if sl[i]!="/" and sl[i] in gl:
+                index=gl.index(sl[i])
+                sl[i]="/"
+                gl[index]="/"
+                b= b+1
+        
+        astr=str(a)
+        bstr=str(b)
+
+        return(astr+"A"+bstr+"B")
